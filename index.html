@@ -118,6 +118,7 @@
   .wish h1::before{content:"";position:absolute;left:50%;top:55%;width:120%;height:70%;transform:translate(-50%,-50%);
     background:radial-gradient(closest-side,rgba(230,193,112,.22),transparent);z-index:-1;pointer-events:none}
   .wish h1 small{display:block;font-weight:400;font-style:italic;font-size:.3em;letter-spacing:.02em;margin-bottom:.35em;color:var(--gold-hi)}
+  .wish h1 svg.title{display:block;width:4.3em;max-width:100%;height:auto;margin:0 auto;overflow:visible}
   .goldtxt{display:inline-block;position:relative;color:var(--gold);
     background-image:linear-gradient(180deg,#fffaf0 0%,#fff5da 18%,#e6c170 52%,#a8771f 82%,#e6c170 100%);
     -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
@@ -228,7 +229,20 @@
     <div class="halo">
       <svg class="mandala" viewBox="-100 -100 200 200" id="mandala"></svg>
       <div class="to2" id="to2"></div>
-      <h1><small>Wishing you a</small><span class="goldtxt" data-t="Happy">Happy</span><br><span class="goldtxt" data-t="Diwali">Diwali</span></h1>
+      <h1 aria-label="Wishing you a Happy Diwali"><small>Wishing you a</small><svg class="title" viewBox="0 0 420 246" aria-hidden="true">
+        <defs>
+          <linearGradient id="gGold" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fffaf0"/><stop offset=".2" stop-color="#fff5da"/><stop offset=".55" stop-color="#e6c170"/><stop offset=".85" stop-color="#a8771f"/><stop offset="1" stop-color="#e6c170"/>
+          </linearGradient>
+          <linearGradient id="gSheen" gradientUnits="userSpaceOnUse" x1="-160" y1="0" x2="0" y2="0">
+            <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+            <animateTransform attributeName="gradientTransform" type="translate" values="-60 0;640 0;640 0" keyTimes="0;.55;1" dur="4.5s" begin="1.6s" repeatCount="indefinite"/>
+          </linearGradient>
+        </defs>
+        <g font-family="'Playfair Display', Georgia, 'Times New Roman', serif" font-weight="700" font-size="124" text-anchor="middle" letter-spacing="-1">
+          <text x="210" y="104" fill="url(#gGold)">Happy</text><text x="210" y="226" fill="url(#gGold)">Diwali</text>
+          <text x="210" y="104" fill="url(#gSheen)">Happy</text><text x="210" y="226" fill="url(#gSheen)">Diwali</text>
+        </g></svg></h1>
       <div class="deva">शुभ दीपावली</div>
     </div>
     <div class="orn"><span></span><svg viewBox="0 0 30 30"><path d="M15 3c3.2 5 4 8.4 0 12.4C11 11.4 11.8 8 15 3Z" fill="#ffb02e"/><path d="M15 7c1.4 2.6 1.7 4.4 0 6.4-1.7-2-1.4-3.8 0-6.4Z" fill="#fff3c4"/><path d="M3 18q12 3.2 24 0q-2.2 9-12 9T3 18Z" fill="#e6c170"/></svg><span></span></div>
