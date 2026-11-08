@@ -113,14 +113,17 @@
   .halo svg.mandala{position:absolute;left:50%;top:50%;width:300px;height:300px;transform:translate(-50%,-50%);opacity:.22;animation:spin 80s linear infinite;pointer-events:none}
   @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
   .to2{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--gold-hi);margin-bottom:6px;min-height:0}
-  .wish h1{position:relative;font-family:var(--serif);font-weight:700;line-height:.95;font-size:clamp(58px,17vw,88px);letter-spacing:-.015em;
-    background:linear-gradient(180deg,#fffaf0 0%,var(--gold-hi) 18%,var(--gold) 52%,var(--gold-lo) 82%,var(--gold) 100%);
-    -webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 8px 28px rgba(230,193,112,.28))}
-  .wish h1 small{display:block;font-weight:400;font-style:italic;font-size:.3em;letter-spacing:.02em;margin-bottom:.35em;
-    -webkit-text-fill-color:var(--gold-hi);color:var(--gold-hi)}
-  .sheen{position:relative;display:inline-block}
-  .sheen::after{content:attr(data-t);position:absolute;inset:0;color:transparent;
-    background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.85) 50%,transparent 62%);background-size:260% 100%;
+  .wish h1{position:relative;font-family:var(--serif);font-weight:700;line-height:.95;font-size:clamp(58px,17vw,88px);letter-spacing:-.015em;color:var(--gold)}
+  /* soft glow behind the title (no filter on text: Safari hides gradient text with filters) */
+  .wish h1::before{content:"";position:absolute;left:50%;top:55%;width:120%;height:70%;transform:translate(-50%,-50%);
+    background:radial-gradient(closest-side,rgba(230,193,112,.22),transparent);z-index:-1;pointer-events:none}
+  .wish h1 small{display:block;font-weight:400;font-style:italic;font-size:.3em;letter-spacing:.02em;margin-bottom:.35em;color:var(--gold-hi)}
+  .goldtxt{display:inline-block;position:relative;color:var(--gold);
+    background-image:linear-gradient(180deg,#fffaf0 0%,#fff5da 18%,#e6c170 52%,#a8771f 82%,#e6c170 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  @supports not ((-webkit-background-clip:text) or (background-clip:text)){.goldtxt{-webkit-text-fill-color:var(--gold)}}
+  .goldtxt::after{content:attr(data-t);position:absolute;inset:0;-webkit-text-fill-color:transparent;
+    background-image:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.85) 50%,transparent 62%);background-size:260% 100%;background-position:170% 0;
     -webkit-background-clip:text;background-clip:text;animation:sheen 4.5s ease-in-out 1.6s infinite}
   @keyframes sheen{0%{background-position:170% 0}50%,100%{background-position:-70% 0}}
   .deva{font-family:'Tiro Devanagari Hindi',serif;font-size:16px;color:var(--gold);margin-top:14px;letter-spacing:.04em;opacity:.9}
@@ -225,7 +228,7 @@
     <div class="halo">
       <svg class="mandala" viewBox="-100 -100 200 200" id="mandala"></svg>
       <div class="to2" id="to2"></div>
-      <h1><small>Wishing you a</small><span class="sheen" data-t="Happy">Happy</span><br><span class="sheen" data-t="Diwali">Diwali</span></h1>
+      <h1><small>Wishing you a</small><span class="goldtxt" data-t="Happy">Happy</span><br><span class="goldtxt" data-t="Diwali">Diwali</span></h1>
       <div class="deva">शुभ दीपावली</div>
     </div>
     <div class="orn"><span></span><svg viewBox="0 0 30 30"><path d="M15 3c3.2 5 4 8.4 0 12.4C11 11.4 11.8 8 15 3Z" fill="#ffb02e"/><path d="M15 7c1.4 2.6 1.7 4.4 0 6.4-1.7-2-1.4-3.8 0-6.4Z" fill="#fff3c4"/><path d="M3 18q12 3.2 24 0q-2.2 9-12 9T3 18Z" fill="#e6c170"/></svg><span></span></div>
