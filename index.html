@@ -8,7 +8,15 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="You've received a Diwali wish 🪔">
 <meta property="og:description" content="From Webelogy & Webelogy Rentals — tap to open ✨">
-<meta property="og:image" content="https://www.webelogy.com/og/webelogy-og.png">
+<meta property="og:url" content="https://diwali.webelogy.com/">
+<meta property="og:site_name" content="Webelogy">
+<meta property="og:image" content="https://diwali.webelogy.com/og.jpg">
+<meta property="og:image:secure_url" content="https://diwali.webelogy.com/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Happy Diwali from Webelogy & Webelogy Rentals">
+<meta name="twitter:image" content="https://diwali.webelogy.com/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#08130f">
 <link rel="icon" href="https://www.webelogy.com/brand/icon.svg">
@@ -30,7 +38,7 @@
   html,body{height:100%}
   body{
     font-family:'Manrope',system-ui,sans-serif;color:var(--text);-webkit-font-smoothing:antialiased;
-    min-height:100svh;display:grid;place-items:center;padding:70px 20px 130px;overflow:hidden;user-select:none;
+    min-height:100svh;display:grid;place-items:center;padding:64px 16px 104px;overflow-x:hidden;overflow-y:auto;user-select:none;
     background:
       radial-gradient(70% 45% at 50% -5%, oklch(36% .075 165 / .85) 0%, transparent 70%),
       radial-gradient(60% 30% at 50% 105%, rgba(230,193,112,.18) 0%, transparent 70%),
@@ -152,6 +160,40 @@
   @keyframes fl{to{transform:translateX(-50%) scale(.9,1.1)}}
 
   @media (max-width:400px){.invite{padding:50px 22px 42px}.wish{padding:46px 22px 36px}.sign .names{flex-direction:column;gap:6px}.sign .names i{display:none}}
+
+  /* ---------- Phone fit: short / small screens ---------- */
+  @media (max-height:780px){
+    .wish{padding:38px 24px 30px}
+    .halo{margin-top:22px}
+    .halo svg.mandala{width:240px;height:240px}
+    .wish h1{font-size:clamp(48px,min(15vw,9.2vh),80px)}
+    .orn{margin:16px auto 14px}
+    .msg{font-size:14.5px;line-height:1.65}
+    .sign{margin-top:20px;padding-top:16px}
+    .invite{padding:44px 24px 38px}
+    .seal{margin-top:28px;width:100px;height:100px}
+    .diya{transform:scale(.85);transform-origin:bottom}
+  }
+  @media (max-height:660px){
+    body{padding:56px 14px 84px}
+    .wish{padding:30px 20px 24px;border-radius:22px}
+    .topline{font-size:9px}
+    .halo{margin-top:14px}
+    .wish h1{font-size:clamp(42px,min(14vw,8.6vh),70px)}
+    .wish h1 small{margin-bottom:.2em}
+    .deva{margin-top:8px;font-size:14px}
+    .orn{margin:10px auto}
+    .msg{font-size:13.5px;line-height:1.55}
+    .sign{margin-top:14px;padding-top:12px}
+    .sign small{font-size:9px}
+    .sign .names{margin-top:8px;gap:4px}
+    .sign .names b{font-size:12px}
+    .invite h2{font-size:28px}
+    .seal{margin-top:22px;width:90px;height:90px}
+    .invite .hint{margin-top:16px}.invite .from{margin-top:20px}
+    .diyas{bottom:8px}.diya{transform:scale(.72)}
+    #snd{top:10px;right:10px;width:38px;height:38px}
+  }
   @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -331,6 +373,13 @@
     every(startLadi,11000);
   }
   ['click','touchend','keydown'].forEach(ev=>document.addEventListener(ev,openWish));
+
+  /* ---------- Browser band / minimize / doosri app: music + patakhe band ---------- */
+  function pauseAll(){try{w.pause()}catch(_){}try{AC&&AC.suspend()}catch(_){}}
+  function resumeAll(){if(!opened||muted)return;try{w.play().catch(()=>{})}catch(_){}try{AC&&AC.resume()}catch(_){}}
+  document.addEventListener('visibilitychange',()=>{document.hidden?pauseAll():resumeAll()});
+  addEventListener('pagehide',pauseAll);
+  addEventListener('pageshow',e=>{if(e.persisted)resumeAll()});
 </script>
 </body>
 </html>
